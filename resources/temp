@@ -1,0 +1,7 @@
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36
+Upgrade-Insecure-Requests: 1
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Referer: https://www.avito.ru/rossiya
+Accept-Encoding: gzip, deflate, br
+Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: sx=H4sIAAAAAAACAxXGQQqAIBAF0LvMukWahnkcJab4kcUHjaK7R2%2F1HklXXbj7%2BT4LyYxGQgGV%2BEiVKMnmvK0V44GmKKXB0YW%2FUCqlk1mi8db2ZjBhet8PLEIk9lMAAAA%3D; expires=Sat, 31-Mar-2018 21:26:29 GMT; Max-Age=604800; path=/; domain=.avito.ru; secure; HttpOnly; SameSite=Lax

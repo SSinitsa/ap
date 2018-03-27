@@ -1,0 +1,6 @@
+avito.parser-1.0-SNAPSHOT.jar
+.idea/
+target/
+*.iml
+.settings/org.eclipse.jdt.core.prefs
+classes/
