@@ -20,7 +20,7 @@ public class GoogleAuthorizeUtil {
 
     public static Credential authorize() throws IOException, GeneralSecurityException {
 
-        InputStream in = new FileInputStream("src/main/resources/client_secret.json");
+        InputStream in = new FileInputStream("./resources/client_secret.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JacksonFactory
                 .getDefaultInstance(), new InputStreamReader(in));
 

@@ -5,14 +5,9 @@ import java.util.Properties;
 
 public class Run {
 
-	private static final String PATH_TO_RECOURCES = "src/main/resources";
+	private static final String PATH_TO_RECOURCES = "./resources";
 
 	public static void main(String[] args) throws IOException {
-		
-		if (License.isExpired()) {
-			System.out.println("YOUR LICENSE IS EXPIRED");
-			return;
-		}
 
 		Properties config = new Properties();
 		try {
@@ -28,9 +23,26 @@ public class Run {
 			return;
 		}
 
-		if (time.equals("0")) {
+		if (time.matches("\\d")) {
 			do {
+				long timer = Long.parseLong(time)*60*60;
 				parser.parse();
+				for (;timer>0; timer--) {
+					System.out.print("\r");
+					System.out.print("Wait " + timer + "seconds..." );
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				try {
+					Thread.sleep(Long.parseLong(time)*1000*60*60);
+				} catch (NumberFormatException | InterruptedException e) {
+					System.out.println("Time error \n" + e);
+					return;
+				}
 			} while (true);
 		}
 

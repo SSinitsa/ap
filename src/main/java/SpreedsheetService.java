@@ -1,6 +1,9 @@
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.TreeMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.google.api.services.sheets.v4.Sheets;
@@ -25,7 +28,7 @@ public class SpreedsheetService {
     }
 
     public ValueRange readSingleRange(String spreadsheetId, String range) throws IOException {
-        return service.spreadsheets().values().get(spreadsheetId, range).execute();
+    	return service.spreadsheets().values().get(spreadsheetId, range).execute();
     }
 
     public BatchGetValuesResponse readMultipleRanges(String spreadsheetId, List<String> ranges) throws IOException {
@@ -57,8 +60,8 @@ public class SpreedsheetService {
     }
 
 
-    public ConcurrentHashMap<String, String> getCategories(String adminTableId) throws IOException {
-        ConcurrentHashMap<String, String> result = new ConcurrentHashMap<>();
+    public TreeMap<String, String> getCategories(String adminTableId) throws IOException {
+    	TreeMap<String, String> result = new TreeMap<>();
         List<List<Object>> lists = readSingleRange(adminTableId, "A2:B").getValues();
         for (List<Object> list : lists) {
             result.put((String) list.get(1), (String) list.get(0));
@@ -72,6 +75,12 @@ public class SpreedsheetService {
     }
 
     public void clearTable (String tableId, int tableSize) throws IOException {
-        service.spreadsheets().values().clear(tableId, "A"+(tableSize+2)+":F", new ClearValuesRequest()).execute();
+        try {
+			service.spreadsheets().values().clear(tableId, "A"+(tableSize+2)+":F", new ClearValuesRequest()).execute();
+		} catch (IOException e) {
+			System.out.println("Append " + tableSize*2 + " rows...");
+			appendingValues(tableId, "A"+(tableSize+2)+":F", Collections.nCopies(tableSize*2, Collections.nCopies(6, "")), "RAW");
+			clearTable(tableId, tableSize);
+		}
     }
 }

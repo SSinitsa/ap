@@ -1,1 +1,2 @@
-admin.table: https://docs.google.com/spreadsheets/d/11tfjLXE0MRPTP5JqX0xBy2_qNBxLPIU8Hkx8nvm6gWg/edit#gid=0
+admin.table: https://docs.google.com/spreadsheets/d/1oL2KFPMH99U1MBYc-Ct7DQrEffKTXgORMHOrxzezyHY/edit?usp=sharing
+start.time: 8
